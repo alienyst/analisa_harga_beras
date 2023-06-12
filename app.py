@@ -193,8 +193,26 @@ st.markdown("""<div style="text-align: justify;">
 
 st.write("Dengan mempertimbangkan data inflasi ini, dapat dikatakan bahwa inflasi memiliki dampak pada daya beli dan harga-harga beras. Tingkat inflasi yang rendah pada tahun 2020 dan 2021 dapat membantu menjaga stabilitas harga beras, sementara inflasi yang lebih tinggi pada tahun 2022 dapat mempengaruhi harga beras dan biaya produksinya.")
 
+hbx = hb.groupby('Tahun')['Beras'].mean().reset_index()
+df_combined = pd.merge(hbx, lpx, on='Tahun')
+df_combined = pd.merge(df_combined, ibx, on='Tahun')
+df_combined = pd.merge(df_combined, infx, on='Tahun')
+df_combined.rename({'Jumlah' : 'Total Impor', 'Beras' : 'Harga Beras'}, axis=1, inplace=True)
+
+st.subheader('Korelasi Harga Beras 2020-2022 dengan Kolom Lainnya')
+corr_df = df_combined.corr().iloc[2:,1]
+st.dataframe(corr_df)
+
+st.markdown("""<div style="text-align: justify;">
+		    <ul>
+		    <li>Korelasi antara harga beras dan Produktivitas (ku/ha) adalah positif dan sangat kuat (0.981051), yang menunjukkan hubungan yang kuat antara kedua variabel tersebut.</li>
+    		<li>Korelasi antara harga beras dan Data Inflasi adalah positif dan sangat kuat (0.925981), yang menunjukkan hubungan yang kuat antara kedua variabel tersebut.</li>
+    		</ul>
+	</div>""", unsafe_allow_html=True)
+
+
+
 st.header('Kesimpulan')
 
 st.write('Meskipun produksi padi relatif stabil, impor beras masih dibutuhkan untuk memenuhi kebutuhan dalam negeri. Peningkatan harga beras dapat dipengaruhi oleh faktor-faktor seperti fluktuasi impor beras, inflasi, dan tekanan pada pasokan dan permintaan. Kesimpulan ini menunjukkan pentingnya menjaga stabilitas produksi padi dan pasokan beras dalam negeri untuk mengendalikan harga beras dan mengurangi ketergantungan pada impor.')
-
-st.text('Sumber Data : bps.go.id dan hargapangan.id')
+st.markdown('Sumber Data : [bps.go.id](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiahZTTjL3_AhW34jgGHaR7ANoQFnoECBsQAQ&url=https%3A%2F%2Fwww.bps.go.id%2Findicator%2F53%2F1498%2F1%2Fluas-panen-produksi-dan-produktivitas-padi-menurut-provinsi.html&usg=AOvVaw14nJ1XWC9vajIhn_a7l9tC), [hargapangan.id](https://hargapangan.id/tabel-harga) dan [bi.go.id](https://www.bi.go.id/id/statistik/indikator/data-inflasi.aspx)')
