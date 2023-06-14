@@ -135,7 +135,7 @@ st.markdown("""<div style="text-align: justify;">
 		    <ul>
 		    <li>Luas panen padi mengalami sedikit penurunan dari tahun 2018 hingga 2021, tetapi meningkat sedikit pada tahun 2022. Hal ini menunjukkan bahwa ada fluktuasi dalam luas lahan yang digunakan untuk menanam padi.</li>
     		<li>Meskipun luas panen mengalami fluktuasi, produksi padi relatif stabil dari tahun 2018 hingga 2022. Hal ini menunjukkan adanya peningkatan dalam produktivitas pertanian, karena meskipun lahan yang digunakan sedikit berkurang, produksi padi tetap stabil.</li>
-    		<li>Produktivitas padi (berdasarkan kilogram per hektar) juga mengalami fluktuasi kecil dari tahun 2018 hingga 2022. Namun, secara keseluruhan, produktivitas padi tetap relatif tinggi dan stabil selama periode tersebut.</li>
+    		<li>Produktivitas padi (berdasarkan kuintal per hektar) juga mengalami fluktuasi kecil dari tahun 2018 hingga 2022. Namun, secara keseluruhan, produktivitas padi tetap relatif tinggi dan stabil selama periode tersebut.</li>
     		</ul>
 	</div>""", unsafe_allow_html=True)
 
